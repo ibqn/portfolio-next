@@ -1,7 +1,7 @@
 import Head from 'next/head'
-import Image from 'next/image'
 
-import LogoImage from 'images/logo.png'
+import NavMenu from 'components/nav-menu'
+import Logo from 'components/logo'
 
 export default function Home() {
   return (
@@ -13,19 +13,13 @@ export default function Home() {
       </Head>
       <div className="h-1/2 bg-gradient-to-t from-indigo-200 to-white lg:h-screen">
         <nav className="fixed top-0 w-full bg-white">
-          <div className="container mx-auto flex justify-between py-5">
-            <div className="flex items-center gap-2">
-              <div className="flex w-8 items-center">
-                <Image src={LogoImage} />
-              </div>
+          <div className="container mx-auto flex justify-between p-5">
+            <Logo />
 
-              <span className="text-2xl font-bold capitalize text-indigo-900">
-                portwind.
-              </span>
-            </div>
+            <NavMenu className="hidden items-center gap-x-8 text-sm font-bold uppercase text-gray-600 md:flex" />
           </div>
         </nav>
-        <div className="bg-blue-300">Whereas recognition</div>
+        <div className="mt-20 bg-blue-300">Whereas recognition</div>
       </div>
     </>
   )
