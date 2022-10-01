@@ -1,9 +1,13 @@
 import Head from 'next/head'
-
+import { MoonIcon } from '@heroicons/react/24/outline'
 import NavMenu from 'components/nav-menu'
 import Logo from 'components/logo'
+import { classNames } from 'class-names'
+import { useState } from 'react'
 
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
   return (
     <>
       <Head>
@@ -13,10 +17,45 @@ export default function Home() {
       </Head>
       <div className="h-1/2 bg-gradient-to-t from-indigo-200 to-white lg:h-screen">
         <nav className="fixed top-0 w-full bg-white">
-          <div className="container mx-auto flex justify-between p-5">
+          <div className="container mx-auto flex justify-between px-2 py-5 md:px-5">
             <Logo />
 
             <NavMenu className="hidden items-center gap-x-8 text-sm font-bold uppercase text-gray-600 md:flex" />
+            <MoonIcon className="hidden w-5 cursor-pointer md:flex" />
+            <div
+              className="z-10 flex flex-col justify-center space-y-1 md:hidden"
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              <span
+                className={classNames(
+                  'flex h-0.5 w-6',
+                  menuOpen ? 'bg-white' : 'bg-black',
+                  'transition-colors duration-300'
+                )}
+              ></span>
+              <span
+                className={classNames(
+                  'flex h-0.5 w-6',
+                  menuOpen ? 'bg-white' : 'bg-black',
+                  'transition-colors duration-300'
+                )}
+              ></span>
+              <span
+                className={classNames(
+                  'flex h-0.5 w-6',
+                  menuOpen ? 'bg-white' : 'bg-black',
+                  'transition-colors duration-300'
+                )}
+              ></span>
+            </div>
+            <NavMenu
+              className={classNames(
+                'absolute left-0 top-0 w-full space-y-10 rounded-b-3xl bg-indigo-900 p-10 text-center uppercase text-white',
+                menuOpen && 'translate-y-0',
+                !menuOpen && '-translate-y-[400px]',
+                'transition-transform duration-300'
+              )}
+            />
           </div>
         </nav>
         <div className="mt-20 bg-blue-300">Whereas recognition</div>
