@@ -4,9 +4,10 @@ import NavMenu from 'components/nav-menu'
 import Logo from 'components/logo'
 import { classNames } from 'class-names'
 import { useState } from 'react'
-// import Image from 'next/image'
 import Image from 'next/future/image'
 import PersonImage from 'images/person.png'
+import Link from 'next/link'
+import TextAnimation from 'components/text-animation'
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -58,17 +59,43 @@ export default function Home() {
               className={classNames(
                 'absolute left-0 top-0 flex w-full flex-col items-center space-y-10 rounded-b-3xl bg-indigo-900 p-10 uppercase text-white',
                 menuOpen ? 'translate-y-0' : '-translate-y-[400px]',
-                'transition-transform duration-300'
+                'shadow-md transition-transform duration-300'
               )}
             />
           </div>
         </nav>
 
-        <div class="absolute -bottom-1/4 right-0 left-0 mx-auto hidden h-big w-big rounded-full bg-indigo-900 lg:block"></div>
+        <div className="absolute -bottom-1/4 right-0 left-0 mx-auto hidden h-big w-big rounded-full bg-indigo-900 lg:block"></div>
         <Image
-          className="absolute bottom-0 right-1/2 h-5/6 translate-x-1/2 object-scale-down"
+          className="absolute bottom-0 right-1/2 h-5/6 w-auto translate-x-1/2 object-scale-down"
+          priority
+          alt="Person"
           src={PersonImage}
         />
+
+        <div className="absolute top-1/3 left-5 w-1/3 text-xl font-bold sm:left-10 sm:text-4xl lg:left-5 lg:text-6xl xl:left-48">
+          <span className="text-gray-600">Freelance</span>
+          <p className="text-red-500">
+            <TextAnimation strings={['Developer', 'Designer', 'Author']} />
+          </p>
+        </div>
+
+        <div className="absolute top-0 right-10 bottom-0 m-auto hidden h-fit w-1/3 flex-col gap-5 rounded-md bg-white p-6 text-sm shadow-lg dark:bg-slate-900 dark:shadow-slate-800 md:flex lg:text-base">
+          <h1 className="text-2xl font-bold text-indigo-900 lg:text-4xl">
+            Hi, I'm John
+          </h1>
+          <p className="text-gray-400">
+            with over 10 years of experience on web design and development.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. N oumquam
+            quo provident, facere minus temporibus veniam nostrum reprehenderit
+            nihil?
+          </p>
+          <Link href="#">
+            <a className="w-fit rounded-md bg-indigo-600 px-4 py-1 text-xl font-semibold text-white">
+              Hire me
+            </a>
+          </Link>
+        </div>
       </div>
     </>
   )
